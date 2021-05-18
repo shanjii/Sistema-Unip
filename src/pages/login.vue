@@ -10,7 +10,7 @@
         <p>Senha</p>
         <input type="text" />
       </div>
-      <button id="login-button">Login</button>
+      <button @click="something()" id="login-button">Login</button>
     </section>
     <section id="footer">
 
@@ -21,6 +21,16 @@
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      
+    }
+  },
+  methods: {
+    something: function () {
+      console.log(this.$store.state.test)
+    }
+  }
 };
 </script>
 
