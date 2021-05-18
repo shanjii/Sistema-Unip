@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --blueRegular: #2e4da2;
+    --blueLight: #3456b1;
+  }
