@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     something: function () {
-      console.log(this.$store.state.test)
+      this.$store.state.test = false
     }
   }
 };

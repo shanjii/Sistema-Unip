@@ -1,5 +1,5 @@
 <template>
-    <Login />
+    <Login v-show="this.$store.state.test" />
 </template>
 
 <script>
