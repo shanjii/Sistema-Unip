@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 // Create a new store instance.
 const store = createStore({
   state: {
-    test: true
+    currentScreen: 'login'
   }
 })
 export default  store;
