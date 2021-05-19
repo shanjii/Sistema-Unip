@@ -33,7 +33,7 @@ export default {
     login: function () {
       this.animate();
       setTimeout(() => (this.showWelcome = true), 100);
-      setTimeout(() => (this.$store.state.currentScreen = "homeAluno"), 1000);
+      // setTimeout(() => (this.$store.state.currentScreen = "homeAluno"), 1000);
     },
     animate: function () {
       document.getElementById("login-container").style.left = "-300px";
