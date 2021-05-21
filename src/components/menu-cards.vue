@@ -11,9 +11,10 @@ export default {
   props: ["icon", "label"],
   mounted: function () {
     setTimeout(() => {
-      document.getElementsByClassName("card").forEach((element) => {
+      for (let index = 0; index < document.getElementsByClassName('card').length; index++) {
+        const element = document.getElementsByClassName('card')[index];
         element.style.opacity = 1
-      });
+      }
     }, 100);
   },
 };
