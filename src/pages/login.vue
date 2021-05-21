@@ -1,5 +1,5 @@
 <template>
-  <section id="login-container">
+  <section id="log-container">
     <img src="../assets/logo-unip.svg" alt="" />
     <div class="input-container">
       <input type="text" placeholder="RA" />
@@ -10,8 +10,8 @@
     <button @click="login()" id="login-button">Login</button>
   </section>
   <section id="welcome" v-if="showWelcome">
-      <p>Bem vindo,</p>
-      <p>Felipe Tadeu.</p>
+    <p>Bem vindo,</p>
+    <p>Felipe Tadeu.</p>
   </section>
   <section id="footer">
     <p>
@@ -33,10 +33,15 @@ export default {
     login: function () {
       this.animate();
       setTimeout(() => (this.showWelcome = true), 100);
-      // setTimeout(() => (this.$store.state.currentScreen = "homeAluno"), 1000);
+      setTimeout(() => (this.$store.state.currentScreen = "alunohome"), 2500);
     },
     animate: function () {
-      document.getElementById("login-container").style.left = "-300px";
+      document.getElementById("log-container").classList.add("animation-one");
+      setTimeout(function () {
+        document.getElementById("welcome").classList.add("animation-one");
+        document.getElementById("log-container").classList.add("animation-two");
+        document.getElementById("footer").classList.add("animation-one");
+      }, 2000);
     },
   },
 };
@@ -49,14 +54,10 @@ export default {
   top: 300px;
   font-size: 40px;
   color: white;
-  transition: ease-in, 200;
 }
-#login-container {
+#log-container {
   display: flex;
-  position: relative;
   z-index: 0;
-  left: 0;
-  transition: linear, 200ms;
   flex-direction: column;
   border-radius: 1rem;
   width: 30%;
@@ -65,7 +66,7 @@ export default {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-#login-container > img {
+#log-container > img {
   margin-left: auto;
   margin-right: auto;
 }
@@ -124,5 +125,21 @@ button:focus {
 }
 button:hover {
   background-color: var(--unipYellow);
+}
+#footer.animation-one {
+  transition: linear, 1s;
+  transform: translateY(200px);
+}
+#log-container.animation-one {
+  transition: linear, 200ms;
+  transform: translateX(-300px);
+}
+#log-container.animation-two {
+  transition: linear, 1s;
+  transform: translateX(-1300px);
+}
+#welcome.animation-one {
+  transition: linear, 1s;
+  transform: translateX(-1000px);
 }
 </style>
