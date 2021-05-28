@@ -2,16 +2,16 @@
   <section id="log-container">
     <img src="../assets/logo-unip.svg" alt="" />
     <div class="input-container">
-      <input type="text" placeholder="RA" />
+      <input v-model="ra" type="text" placeholder="RA" />
     </div>
     <div class="input-container">
-      <input type="password" placeholder="Senha" />
+      <input v-model="password" type="password" placeholder="Senha" />
     </div>
     <button @click="login()" id="login-button">Login</button>
   </section>
   <section id="welcome" v-if="showWelcome">
     <p>Bem vindo,</p>
-    <p>Felipe Tadeu.</p>
+    <p>{{ name }}.</p>
   </section>
   <section id="footer">
     <p>
@@ -27,16 +27,31 @@ export default {
   data() {
     return {
       showWelcome: false,
+      ra: "",
+      password: "",
+      name: "",
     };
   },
   methods: {
     login: function () {
-      this.animate();
-      setTimeout(() => (this.showWelcome = true), 100);
-      setTimeout(() => (this.$store.state.currentScreen = "alunohome"), 2500);
+      if (this.ra == "N268972" && this.password == "123") {
+        this.animate();
+        this.name = "Victor";
+        this.$store.state.typeUser = "aluno";
+        setTimeout(() => (this.$store.state.currentScreen = "home"), 2500);
+      } else {
+        this.$store.state.error = "Usuário não encontrado";
+        document.getElementById("error").classList.add("active");
+        setTimeout(
+          () => document.getElementById("error").classList.remove("active"),
+          2000
+        );
+      }
     },
+
     animate: function () {
       document.getElementById("log-container").classList.add("animation-one");
+      setTimeout(() => (this.showWelcome = true), 100);
       setTimeout(function () {
         document.getElementById("welcome").classList.add("animation-one");
         document.getElementById("log-container").classList.add("animation-two");

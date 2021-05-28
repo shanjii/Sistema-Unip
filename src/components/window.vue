@@ -85,12 +85,12 @@ svg:last-child:hover {
 svg:first-child:hover {
   background-color: rgb(66, 66, 66);
 }
-#title{
-    display: flex;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 10px;
-    color: rgb(88, 88, 88);
-    font-style: italic;
+#title {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  color: rgb(88, 88, 88);
+  font-style: italic;
 }
 </style>

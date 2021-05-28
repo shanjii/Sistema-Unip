@@ -1,21 +1,24 @@
 <template>
   <Window />
   <body>
+    <Error :error="this.$store.state.error" id="error" />
     <Login v-if="this.$store.state.currentScreen === 'login'" />
-    <AlunoHome v-if="this.$store.state.currentScreen === 'alunohome'"/>
+    <Home v-if="this.$store.state.currentScreen === 'home'" />
   </body>
 </template>
 
 <script>
+import Error from "./components/error";
 import Login from "./pages/login";
 import Window from "./components/window";
-import AlunoHome from "./pages/aluno-home"
+import Home from "./pages/home";
 export default {
   name: "App",
   components: {
     Login,
     Window,
-    AlunoHome
+    Home,
+    Error,
   },
 };
 </script>
@@ -29,6 +32,16 @@ body {
   background-color: var(--blueRegular);
   height: calc(100vh - 30px);
 }
+#error {
+  position: absolute;
+  transition: ease-in, 400ms;
+  right: -300px;
+  top: 40px;
+}
 
+#error.active {
+  transform: translateX(-310px);
+  transition: ease-in, 400ms;
+}
 </style>
 
