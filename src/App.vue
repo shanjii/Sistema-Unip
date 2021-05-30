@@ -25,7 +25,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
-@import "./style/style.css";
+@import "./style/global.css";
 body {
   overflow: hidden;
   display: flex;

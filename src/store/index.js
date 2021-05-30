@@ -8,10 +8,14 @@ const store = createStore({
     account: null,
     error: ''
   },
+  
   mutations: {
+    //Store user data on state
     setAccount(state, element) {
       state.account = element
     },
+
+    //Activate error notification
     error(state, error) {
       state.error = error;
       document.getElementById("error").classList.add("active");
@@ -21,7 +25,9 @@ const store = createStore({
       );
     },
   },
+
   actions: {
+    //Login request
     async login({ commit }, user) {
       let approved = false
       let response = await axios.get('https://60b31bc11bec230017bf33a3.mockapi.io/users')
@@ -34,7 +40,11 @@ const store = createStore({
         });
       }
       return approved
-    }
+    },
+
+
+
+
   }
 })
 
