@@ -41,10 +41,6 @@ const store = createStore({
       }
       return approved
     },
-
-
-
-
   }
 })
 
