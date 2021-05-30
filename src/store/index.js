@@ -21,7 +21,7 @@ const store = createStore({
       document.getElementById("error").classList.add("active");
       setTimeout(
         () => document.getElementById("error").classList.remove("active"),
-        2000
+        4000
       );
     },
   },
