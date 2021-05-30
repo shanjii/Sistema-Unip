@@ -1,5 +1,5 @@
 <template>
-  <section v-if="type == 'aluno'">
+  <section v-if="type == 'sky blue'">
     <div class="card-wrapper">
       <MenuCards icon="calendar" label="Calendario" />
       <MenuCards icon="calendar" label="Calendario" />
@@ -34,7 +34,7 @@ export default {
     };
   },
   mounted() {
-    this.type = this.$store.state.typeUser;
+    this.type = this.$store.state.account.usertype;
   },
 };
 </script>

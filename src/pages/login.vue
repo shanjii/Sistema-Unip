@@ -2,10 +2,10 @@
   <section id="log-container">
     <img src="../assets/logo-unip.svg" alt="" />
     <div class="input-container">
-      <input v-model="ra" type="text" placeholder="RA" />
+      <input v-model="user.ra" type="text" placeholder="RA" />
     </div>
     <div class="input-container">
-      <input v-model="password" type="password" placeholder="Senha" />
+      <input v-model="user.password" type="password" placeholder="Senha" />
     </div>
     <button @click="login()" id="login-button">Login</button>
   </section>
@@ -27,25 +27,21 @@ export default {
   data() {
     return {
       showWelcome: false,
-      ra: "",
-      password: "",
-      name: "",
+      user: {
+        ra: "",
+        password: "",
+        name: ''
+      },
     };
   },
   methods: {
-    login: function () {
-      if (this.ra == "N268972" && this.password == "123") {
+    login: async function () {
+      if (await this.$store.dispatch("login", this.user)) {
+        this.name = this.$store.state.account.name
         this.animate();
-        this.name = "Victor";
-        this.$store.state.typeUser = "aluno";
         setTimeout(() => (this.$store.state.currentScreen = "home"), 2500);
       } else {
-        this.$store.state.error = "Usuário não encontrado";
-        document.getElementById("error").classList.add("active");
-        setTimeout(
-          () => document.getElementById("error").classList.remove("active"),
-          2000
-        );
+        this.$store.commit("error", "Usuário não encontrado");
       }
     },
 
