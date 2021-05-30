@@ -1,6 +1,8 @@
 *{
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 :root {

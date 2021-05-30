@@ -13,6 +13,7 @@
     <p>Bem vindo,</p>
     <p>{{ name }}.</p>
   </section>
+  <Loading v-if="loading" id="loading" />
   <section id="footer">
     <p>
       Copyright © 1997-2021 UNIP - Universidade Paulista. Todos os direitos
@@ -22,25 +23,33 @@
 </template>
 
 <script>
+import Loading from "../components/loading";
 export default {
   name: "Login",
+  components: {
+    Loading,
+  },
   data() {
     return {
       showWelcome: false,
+      loading: false,
       user: {
         ra: "",
         password: "",
-        name: ''
+        name: "",
       },
     };
   },
   methods: {
     login: async function () {
+      this.loading = true;
       if (await this.$store.dispatch("login", this.user)) {
-        this.name = this.$store.state.account.name
+        this.loading = false;
+        this.name = this.$store.state.account.name;
         this.animate();
         setTimeout(() => (this.$store.state.currentScreen = "home"), 2500);
       } else {
+        this.loading = false;
         this.$store.commit("error", "Usuário não encontrado");
       }
     },
@@ -152,5 +161,10 @@ button:hover {
 #welcome.animation-one {
   transition: linear, 1s;
   transform: translateX(-1000px);
+}
+#loading {
+  position: absolute;
+  bottom: 7rem;
+  align-self: center;
 }
 </style>

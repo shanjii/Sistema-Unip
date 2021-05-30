@@ -25,7 +25,7 @@ export default {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.534) 2px 2px 5px;
   flex-direction: column;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(238, 238, 238);
   transition: ease-in, 500ms;
   opacity: 0;
   width: 250px;

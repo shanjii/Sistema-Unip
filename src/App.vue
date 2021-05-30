@@ -36,6 +36,7 @@ body {
 #error {
   position: absolute;
   transition: ease-in, 400ms;
+  z-index: 100;
   right: -300px;
   top: 40px;
 }
