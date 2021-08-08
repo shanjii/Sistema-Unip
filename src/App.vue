@@ -1,9 +1,12 @@
 <template>
   <Window />
   <body>
-    <Error :error="this.$store.state.error" id="error" />
-    <Login v-if="this.$store.state.currentScreen === 'login'" />
-    <Home v-if="this.$store.state.currentScreen === 'home'" />
+    <Error :error="$store.state.error" id="error" />
+    <Login v-if="$store.state.currentScreen === 'login'" />
+    <Home v-if="$store.state.currentScreen === 'home'" />
+    <Matricula v-if="$store.state.currentScreen === 'Matrícula'" />
+    <Calendario v-if="$store.state.currentScreen === 'Calendário'" />
+    <Notas v-if="$store.state.currentScreen === 'Notas'" />
   </body>
 </template>
 
@@ -12,6 +15,10 @@ import Error from "./components/error";
 import Login from "./pages/login";
 import Window from "./components/window";
 import Home from "./pages/home";
+import Calendario from "./pages/calendario";
+import Matricula from "./pages/matricula";
+import Notas from "./pages/notas";
+
 export default {
   name: "App",
   components: {
@@ -19,6 +26,9 @@ export default {
     Window,
     Home,
     Error,
+    Calendario,
+    Notas,
+    Matricula,
   },
 };
 </script>

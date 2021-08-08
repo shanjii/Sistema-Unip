@@ -3,6 +3,7 @@
     <section id="title">
       <p>UNIP</p>
     </section>
+    <Status/>
     <div id="button-container">
       <svg
         @click="minimize()"
@@ -42,8 +43,13 @@
 
 <script>
 const { remote } = window.require("electron");
+import Status from "../components/login-status";
+
 export default {
   name: "window",
+  components: {
+    Status,
+  },
   methods: {
     minimize: function () {
       remote.BrowserWindow.getFocusedWindow().minimize();
@@ -68,7 +74,6 @@ body {
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: auto;
 }
 #button-container > svg {
   -webkit-app-region: no-drag;

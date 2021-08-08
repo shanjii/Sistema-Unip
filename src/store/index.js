@@ -6,13 +6,16 @@ const store = createStore({
   state: {
     currentScreen: 'login',
     account: null,
-    error: ''
+    error: '',
+    initialAccess: false,
+    loggedIn: false
   },
   
   mutations: {
     //Store user data on state
     setAccount(state, element) {
       state.account = element
+      state.loggedIn = true
     },
 
     //Activate error notification

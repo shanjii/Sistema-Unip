@@ -34,8 +34,8 @@ export default {
       showWelcome: false,
       loading: false,
       user: {
-        ra: "",
-        password: "",
+        ra: "maxime",
+        password: "16422",
         name: "",
       },
     };
@@ -47,7 +47,13 @@ export default {
         this.loading = false;
         this.name = this.$store.state.account.name;
         this.animate();
-        setTimeout(() => (this.$store.state.currentScreen = "home"), 2500);
+        setTimeout(
+          () => (
+            (this.$store.state.currentScreen = "home"),
+            (this.$store.state.initialAccess = true)
+          ),
+          2500
+        );
       } else {
         this.loading = false;
         this.$store.commit("error", "Usuário não encontrado");
