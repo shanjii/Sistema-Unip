@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     logout() {
-      location.reload()
+      location.reload();
     },
   },
 };
@@ -31,5 +31,17 @@ export default {
 .logout > p {
   color: rgb(88, 88, 88);
   font-style: italic;
+  animation-name: animate;
+  animation-duration: 0.5s;
+}
+
+@keyframes animate {
+  from {
+    transform: translateY(-30px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
 }
 </style>
