@@ -10,7 +10,7 @@ const store = createStore({
     initialAccess: false,
     loggedIn: false
   },
-  
+
   mutations: {
     //Store user data on state
     setAccount(state, element) {
@@ -31,18 +31,29 @@ const store = createStore({
 
   actions: {
     //Login request
-    async login({ commit }, user) {
-      let approved = false
-      let response = await axios.get('https://60b31bc11bec230017bf33a3.mockapi.io/users')
-      if (response.status === 200) {
+    async loginAluno({ commit }, user) {
+      let userData;
+      let response
+      try {
+        response = await axios.get('http://localhost:3000/alunos')
         response.data.forEach(element => {
-          if (element.ra === user.ra && element.password == user.password) {
-            commit('setAccount',  element)
-            approved = true
-          }
+          if (element.ra === user.ra && element.senha == user.password)
+            userData = element
         });
+        if (userData != undefined) {
+          response = await axios.get('http://localhost:3000/infos/' + userData.id_infos)
+          userData.name = response.data.nome
+          userData.usertype = 'aluno'
+          commit('setAccount', userData)
+          return true
+        }
+        else {
+          commit("error", "Usuário não encontrado")
+        }
       }
-      return approved
+      catch {
+        commit('error', 'Servidor indisponível')
+      }
     },
   }
 })

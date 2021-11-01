@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header id="logo" />
-    <section v-if="type == 'sky blue'">
+    <section v-if="type == 'aluno'">
       <div class="card-wrapper">
         <MenuCards
           @click="navigate('Matrícula')"

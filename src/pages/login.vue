@@ -34,8 +34,8 @@ export default {
       showWelcome: false,
       loading: false,
       user: {
-        ra: "maxime",
-        password: "16422",
+        ra: "",
+        password: "",
         name: "",
       },
     };
@@ -43,7 +43,7 @@ export default {
   methods: {
     login: async function () {
       this.loading = true;
-      if (await this.$store.dispatch("login", this.user)) {
+      if (await this.$store.dispatch("loginAluno", this.user)) {
         this.loading = false;
         this.name = this.$store.state.account.name;
         this.animate();
@@ -56,7 +56,6 @@ export default {
         );
       } else {
         this.loading = false;
-        this.$store.commit("error", "Usuário não encontrado");
       }
     },
 
